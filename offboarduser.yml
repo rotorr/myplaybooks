@@ -1,0 +1,8 @@
+---
+- name: remove the user from the servers
+  hosts: all
+  tasks:
+    - name: remove the user from the servers
+      user:
+        name: alicia
+        state: absent
