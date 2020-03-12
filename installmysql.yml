@@ -11,7 +11,7 @@
         name: "mysql-server"
         state: present
     - name: enable mysql
-      systemd:
+      service:
         name: mysqld
         state: restarted
         enabled: yes
