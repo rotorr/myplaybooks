@@ -9,7 +9,7 @@
         return_content: yes
         status_code: 200
         body_format: json
-        register: result
+      register: result
     - name: show the API result
       debug:
         var: result
