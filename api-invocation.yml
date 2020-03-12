@@ -1,0 +1,11 @@
+---
+- name: invoke the inbox assignment API
+  hosts: all
+  tasks:
+    - name: check sonar web is up
+      uri:
+        url: http://dummy.restapiexample.com/api/v1/employees
+        method: GET
+        return_content: yes
+        status_code: 200
+        body_format: json
