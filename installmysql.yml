@@ -23,12 +23,12 @@
       args:
         creates: /root/.my.cnf
       register: change_temp_pass
-      notify: restart mysqld
+      notify: restart mysql
     - meta: flush_handlers
     - debug:
         var: change_temp_pass
   handlers:
-    - name: restart mysqld
+    - name: restart mysql
       service: 
       name: mysqld 
       state: restarted
