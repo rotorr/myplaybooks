@@ -1,34 +1,37 @@
 ---
-- name: install mysql on DB servers
+- name: install mysql on db servers
   hosts: db
   tasks:
-    - name: Install MySQL 5.7 repo
-      yum: name=http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm state=present
-    - name: Install MySQL 5.7
-      yum: pkg={{ item }}
+    - name: download epel-release
+      yum:
+        name: https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm
+        state: present
+    - name: install mysql
+      yum:
+        name: "{{ item }}"
+        state: present
       with_items:
-      - mysql-community-server
-      - mysql-community-client
-      - MySQL-python
-    - name: Start the MySQL service
-      service: name=mysqld state=started enabled=true
-    - name: Change mysql root password and keep track in 
-      shell: |
-        password_match=`awk '/A temporary password is generated for/ {a=$0} END{ print a }' /var/log/mysqld.log | awk '{print $(NF)}'`
-        echo $password_match
-        mysql -uroot -p$password_match --connect-expired-password -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'PassW0rd'; flush privileges; "
-        echo "[client]"
-        user=root
-        password=PassW0rd > /root/.my.cnf
-      args:
-        creates: /root/.my.cnf
-      register: change_temp_pass
-      notify: restart mysql
-    - meta: flush_handlers
-    - debug:
-        var: change_temp_pass
-  handlers:
-    - name: restart mysql
-      service: 
-        name: mysqld 
+        - mysql-community-devel*
+        - mysql-community-server*
+        - MySQL-python
+    - name: enable mysql
+      systemd:
+        name: mysqld
         state: restarted
+        enabled: yes
+    - name: get root password
+      shell: "grep 'A temporary password is generated for root@localhost' /var/log/mysqld.log | awk -F ' ' '{print $(NF)}'"
+      register: root_password
+    - name: update expired root user password
+      command: mysql --user root --password={{ root_password.stdout }} --connect-expired-password --execute="ALTER USER 'root'@'localhost' IDENTIFIED BY '{{ mysql.root.password }}';"
+    - name: create mysql client user
+      mysql_user:
+        login_user: root
+        login_password: "{{ mysql.root.password }}"
+        name: "{{ item.name }}"
+        password: "{{ item.password }}"
+        priv: '*.*:ALL,GRANT'
+        state: present
+        host: '%'
+      with_items:
+        - "{{ mysql.users }}"
