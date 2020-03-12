@@ -10,6 +10,15 @@
         status_code: 200
         body_format: json
       register: result
+    - name: If success
+      debug: 
+        msg: Successful API invocation
+      when: result.status == 200
+    - name: if failed
+      debug:
+        msg: API Invocation failed check the error in the next task
+      when: result.status >= 400
     - name: show the API result
       debug:
         var: result
+      when: result.status >= 400
