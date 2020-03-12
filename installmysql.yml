@@ -8,7 +8,7 @@
         state: present
     - name: install mysql
       yum:
-        name: "@mysql"
+        name: "mysql-server"
         state: present
     - name: enable mysql
       systemd:
