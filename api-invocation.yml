@@ -18,7 +18,7 @@
       debug:
         msg: API Invocation failed check the error in the next task
       when: result.status >= 400
-    - name: show the API result
+    - name: show the API result if failed
       debug:
         var: result
       when: result.status >= 400
