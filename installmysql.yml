@@ -17,7 +17,7 @@
         enabled: yes
         
 - name: install http and ftp
-  hosts: saphana
+  hosts: web
   tasks:
     - name: install httpd
       yum:
