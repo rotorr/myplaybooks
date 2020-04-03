@@ -6,7 +6,7 @@
       win_chocolatey:
         name: firefox
         state: present
-    - name: Uninstall Firefox
+    - name: Install Chrome
       win_chocolatey:
-        name: firefox
+        name: chrome
         state: absent
