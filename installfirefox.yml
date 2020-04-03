@@ -13,4 +13,8 @@
     - name: Install notepadplusplus version 6.6
       win_chocolatey:
         name: notepadplusplus
-        version: '6.6'
+        pinned: yes
+        state: present
+      become: yes
+      become_user: Administrator
+      become_method: runas
