@@ -10,10 +10,10 @@
       win_chocolatey:
         name: googlechrome
         state: present
-    - name: Install notepadplusplus version 6.6
+    - name: remove all pins for Notepad++ on all versions
       win_chocolatey:
         name: notepadplusplus
-        pinned: yes
+        pinned: no
         state: present
       become: yes
       become_user: Administrator
