@@ -1,0 +1,16 @@
+---
+- name: test chocolatey with ansible
+  hosts: all
+  tasks:
+    - name: Install Firefox
+      win_chocolatey:
+        name: firefox
+        state: absent
+    - name: Install Chrome
+      win_chocolatey:
+        name: googlechrome
+        state: absent
+    - name: Install Notepad++
+      win_chocolatey:
+        name: notepadplusplus
+        state: absent
