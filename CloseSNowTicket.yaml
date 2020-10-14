@@ -17,6 +17,8 @@
       instance: "{{ sn_instance }}"
       number: CHG0030004
       data:
+        close_code: successful
+        close_notes: Closing the ticket
         state: 3
     register: incident
 
