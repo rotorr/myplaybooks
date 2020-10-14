@@ -21,4 +21,4 @@
     register: incident
 
   - debug: 
-      var: incident.record.state
+      var: incident.record.close_code
