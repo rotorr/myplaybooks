@@ -17,7 +17,7 @@
       instance: "{{ sn_instance }}"
       number: CHG0030004
       data:
-        state: 3
+        state: -1
     register: incident
 
   - debug: 
