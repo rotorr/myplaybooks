@@ -1,0 +1,11 @@
+---
+#snow_record variables
+ 
+sn_username: admin
+sn_password: @Dm1n123$
+sn_instance: dev101863.service-now.com
+ 
+#data variables
+ 
+sn_severity: 2
+sn_priority: 2
