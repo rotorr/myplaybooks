@@ -8,7 +8,7 @@
   - name: include vars
     include_vars: change_request_vars.yml
     
-- name: Modify a change request status to Scheduled
+  - name: Modify a change request status to Scheduled
     snow_record:
       state: present
       table: change_request
