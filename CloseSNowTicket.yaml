@@ -15,8 +15,10 @@
       username: "{{ sn_username }}"
       password: "{{ sn_password }}"
       instance: "{{ sn_instance }}"
-      number: CHG0030004
+      number: CHG0030005
       data:
+        close_code: 7
+        close_notes: Closing the ticket
         state: 3
     register: incident
 
