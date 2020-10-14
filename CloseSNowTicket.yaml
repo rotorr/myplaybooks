@@ -20,67 +20,7 @@
         state: -4
     register: incident  
  
-  - name: Modify a change request status to Authorize
-    snow_record:
-      state: present
-      table: change_request
-      username: "{{ sn_username }}"
-      password: "{{ sn_password }}"
-      instance: "{{ sn_instance }}"
-      number: CHG0030006
-      data:
-        state: -3
-    register: incident
-    
-  - name: Modify a change request status to Scheduled
-    snow_record:
-      state: present
-      table: change_request
-      username: "{{ sn_username }}"
-      password: "{{ sn_password }}"
-      instance: "{{ sn_instance }}"
-      number: CHG0030006
-      data:
-        state: -2
-    register: incident   
 
-  - name: Modify a change request status to Implement
-    snow_record:
-      state: present
-      table: change_request
-      username: "{{ sn_username }}"
-      password: "{{ sn_password }}"
-      instance: "{{ sn_instance }}"
-      number: CHG0030006
-      data:
-        state: -1
-    register: incident
-
-  - name: Modify a change request status to Review
-    snow_record:
-      state: present
-      table: change_request
-      username: "{{ sn_username }}"
-      password: "{{ sn_password }}"
-      instance: "{{ sn_instance }}"
-      number: CHG0030006
-      data:
-        state: 0
-    register: incident
-
-  - name: Modify a change request status to closed
-    snow_record:
-      state: present
-      table: change_request
-      username: "{{ sn_username }}"
-      password: "{{ sn_password }}"
-      instance: "{{ sn_instance }}"
-      number: CHG0030006
-      data:
-        close_code: successful
-        close_notes: Closing the ticket
-        state: 3
-    register: incident
 
   - debug: 
       var: incident.record.close_code
