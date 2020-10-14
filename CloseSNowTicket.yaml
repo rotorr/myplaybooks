@@ -17,8 +17,6 @@
       instance: "{{ sn_instance }}"
       number: CHG0030006
       data:
-        close_code: successful
-        close_notes: Closing the ticket
         state: -4
     register: incident  
  
@@ -31,8 +29,6 @@
       instance: "{{ sn_instance }}"
       number: CHG0030006
       data:
-        close_code: successful
-        close_notes: Closing the ticket
         state: -3
     register: incident
     
@@ -45,8 +41,6 @@
       instance: "{{ sn_instance }}"
       number: CHG0030006
       data:
-        close_code: successful
-        close_notes: Closing the ticket
         state: -2
     register: incident   
 
@@ -59,8 +53,6 @@
       instance: "{{ sn_instance }}"
       number: CHG0030006
       data:
-        close_code: successful
-        close_notes: Closing the ticket
         state: -1
     register: incident
 
@@ -73,8 +65,6 @@
       instance: "{{ sn_instance }}"
       number: CHG0030006
       data:
-        close_code: successful
-        close_notes: Closing the ticket
         state: 0
     register: incident
 
