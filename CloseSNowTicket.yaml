@@ -36,7 +36,7 @@
         state: -3
     register: incident
     
-   - name: Modify a change request status to Scheduled
+  - name: Modify a change request status to Scheduled
     snow_record:
       state: present
       table: change_request
