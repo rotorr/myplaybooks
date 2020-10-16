@@ -22,7 +22,7 @@
         state: 6
     register: incident
     
-   - name: Modify a change request status to Review
+  - name: Modify a change request status to Review
     snow_record:
       state: present
       table: incident
