@@ -15,7 +15,7 @@
       username: "{{ sn_username }}"
       password: "{{ sn_password }}"
       instance: "{{ sn_instance }}"
-      number: INC0010006
+      number: "{{ sn_incident_number }}"
       data:
         close_code: Closed/Resolved by Caller
         close_notes: Closing the ticket
@@ -29,7 +29,7 @@
       username: "{{ sn_username }}"
       password: "{{ sn_password }}"
       instance: "{{ sn_instance }}"
-      number: INC0010006
+      number: "{{ sn_incident_number }}"
       data:
         state: 7
     register: incident
