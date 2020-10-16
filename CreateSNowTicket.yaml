@@ -18,7 +18,7 @@
       data:
         severity: "{{ sn_severity }}"
         priority: "{{ sn_priority }}"
-        short_description: "This is a test opened by Ansible"
+        short_description: "Remove the user"
     register: new_incident
 
   - debug: 
