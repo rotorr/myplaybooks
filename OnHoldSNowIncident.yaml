@@ -7,8 +7,7 @@
   tasks:
   - name: include vars
     include_vars: change_request_vars.yml
-
-    
+  
   - name: Modify a change request status to Review
     snow_record:
       state: present
@@ -21,7 +20,5 @@
         state: 3
     register: incident
  
-
-
   - debug: 
       var: incident.record.close_code
