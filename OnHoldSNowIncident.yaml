@@ -1,0 +1,27 @@
+---
+- name: Change ticket with notes
+  hosts: localhost
+  gather_facts: no
+  connection: local
+
+  tasks:
+  - name: include vars
+    include_vars: change_request_vars.yml
+
+    
+  - name: Modify a change request status to Review
+    snow_record:
+      state: present
+      table: incident
+      username: "{{ sn_username }}"
+      password: "{{ sn_password }}"
+      instance: "{{ sn_instance }}"
+      number: "{{ sn_incident_number }}"
+      data:
+        state: 3
+    register: incident
+ 
+
+
+  - debug: 
+      var: incident.record.close_code
