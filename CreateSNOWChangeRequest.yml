@@ -1,0 +1,28 @@
+---
+- name: Create ticket with notes
+  hosts: localhost
+  gather_facts: no
+  connection: local
+
+  tasks:
+  - name: include vars
+    include_vars: change_request_vars.yml
+
+  - name: Create a new incident
+    snow_record:
+      state: present
+      table: chnage_request
+      username: "{{ sn_username }}"
+      password: "{{ sn_password }}"
+      instance: "{{ sn_instance }}"
+      data:
+        severity: "{{ sn_severity }}"
+        priority: "{{ sn_priority }}"
+        short_description: "Remove the user"
+    register: new_incident
+
+  - debug: 
+      var: new_incident.record
+      
+  - debug: 
+      var: new_incident.record.number
