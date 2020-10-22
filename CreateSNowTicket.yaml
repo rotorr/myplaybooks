@@ -18,7 +18,7 @@
       data:
         severity: "{{ sn_severity }}"
         priority: "{{ sn_priority }}"
-        short_description: "Remove the user"
+        short_description: "Service Ansible Demo 10222020"
     register: new_incident
 
   - debug: 
