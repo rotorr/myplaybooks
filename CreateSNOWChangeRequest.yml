@@ -11,7 +11,7 @@
   - name: Create a new incident
     snow_record:
       state: present
-      table: chnage_request
+      table: change_request
       username: "{{ sn_username }}"
       password: "{{ sn_password }}"
       instance: "{{ sn_instance }}"
